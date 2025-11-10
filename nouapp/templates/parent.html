@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOU E-Gyan Portal</title>
+    <link rel="shortcut icon" href="{% static 'images/logo.jpeg' %}" />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet"/>
+    <style>
+      
+      .font2
+      {
+        font-family: 'Roboto Slab', serif;
+      }
+      .font3{
+        font-family: 'Playfair Display', serif;
+
+      }
+      .font{
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      }
+      .ab-box{
+        background: linear-gradient(rgba(139,0,0,.5),rgba(139,0,0,.6));
+        margin-top: 10px;
+        min-width: 30%;
+        color: #fff;
+        font-size: .9rem;
+        font-family: poppins,sans-serif;
+        text-align: center;
+        float: left;
+
+      }
+      .me-3{
+        margin-right: 1ream!important;
+      }
+      
+    </style>
+    <script src ="{% static 'js/bootstrap.bundle.js' %}"></script>
+    
+</head>
+<body>
+    <div class="container-fluid m-0 p-0">
+        <div class="row bg-danger text-light" style="min-height:30px;">
+        <div class="col-sm-4 font" style="margin-top: 3px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-phone fa-beat-fade"></i> Contact No : 9997194602</div>
+        <div class="col-sm-4 font" style="margin-top: 3px;"><i class="fa-solid fa-envelope fa-beat-fade"></i> Email Id : ayushpratapno1@gmail.com</div>
+        <div class="col-sm-4 font" style="margin-top: 3px;"><i class="fa-solid fa-user fa-beat-fade"></i> Follow Us : ayush_pratap05</div>
+        </div>
+        <div class="row ">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid bg-danger">
+                  <a class="navbar-brand font2 text-light" href="#" style="margin-left: 10px;"><h2>Nalanda Open University</h2></a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active text-light" aria-current="page" href="{% url 'nouapp:index' %}">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'nouapp:aboutus' %}">About Us</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'nouapp:registration' %}">Registration</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'nouapp:login' %}">Log In</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'nouapp:contactus' %}">Contact Us</a>
+                      </li>
+
+                    </ul>
+                    <form class="d-flex" role="search">
+                      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-primary" type="submit" style="margin-right: 10px;">Search</button>
+                    </form>
+                  </div>
+                </div>
+              </nav>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <img src="{% static 'images/logo.jpeg' %}" alt="" style="margin-left: 180px;">
+          </div>
+          <div class="col-sm-9" style="min-height: 120px; ">
+            
+          <h1 class="font2" style="color: brown; margin-left: 90px;">NOU e-Gyan PORTAL</h1>
+          <h6 style="margin-left: 90px;">(A Concept by Nalanda Open University)</h6>
+        <h3 style="margin-left: 700px;">
+              <i class="fa-brands fa-twitter" style="color:#00acee; border-radius: 50px;"></i>
+              <i class="fa-brands fa-facebook" style="color:#4267B2;"></i>
+              <i class="fa-brands fa-instagram" style="color:#e8486d;"></i>
+              <i class="fa-brands fa-linkedin" style="color:#0A66C2;"></i>
+              <i class="fa-brands fa-youtube" style="color: rgb(233, 6, 6);"></i>
+            </h3>
+          </div>
+        </div>
+        <div class="row">
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner" style="min-height: 500px;">
+                  <div class="carousel-item active">
+                    <img src="{% static 'images/s1.jpg' %}" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'images/s2.jpg' %}" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'images/s3.jpg' %}" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+        <div class="row" style="background-color: rgb(255, 0, 0); min-height: 50px;">
+          <marquee behavior="scroll" direction="left" scrollamount="12" onmousemove="this.stop()" onmouseout="this.start()">
+           <p class="ab-box me-3">The portal is easy to access &amp; 
+            highly user <br>
+            friendly for the students & study center </p>
+            <p class="ab-box me-3">The portal is fully secured and accessible <br> 
+              24x7 its authorised users.</p>
+           <p class="ab-box me-3">The portal is easy to access &amp; highly user <br> 
+            friendly for the student &amp;study center</p>
+          </marquee> 
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4" style="background-color: rgb(50, 194, 182); min-height: 600px;">
+              <marquee direction="up" behavior="alternate" height="400" onmouseover="stop()" onmouseout="start()">
+              {% for n in ns %}
+              <p style="text-align: center;color:blue;">{{n.newstext}}</p>
+              {% endfor %}
+            </marquee>
+            </div>
+            <div class="col-sm-8" style="background-color: rgb(229, 160, 160); min-height: 600px;">
+                {% block main %}
+
+
+                {% endblock main %}
+            
+            </div>
+        </div>
+
+        <div class="row mt-2">
+          <h4><span style="color: #82888b;">&nbsp;&nbsp;&nbsp;&nbsp;FEATURES</span><hr></h4>
+          <h2><b>&nbsp;&nbsp;&nbsp;STUDENT <span style="color:#c2100a ;">  SERVICES</span></b></h2>
+          <div class="col-sm-3">
+            <div class="card" >
+              <img src="{% static 'images/4957136.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color: #c2100a;">
+                <h5 class="card-title text-light">Login</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="card">
+              <img src="{% static 'images/Social Dashboard-pana.png' %}" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color: #c2100a;">
+                <h5 align="center" class="card-title text-light">Dashboard</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="card">
+              <img src="{% static 'images/Learning-pana.png' %}" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color: #c2100a;">
+                <h5 align="center" class="card-title text-light">Self Learning Material (SLM)</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="card" >
+              <img src="{% static 'images/Ebook-rafiki.png' %}" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color: #c2100a;">
+                <h5 align="center" class="card-title text-light">e-Books</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="card" style="margin-top: 30px;">
+              <img src="{% static 'images/Analysis-pana.png' %}" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color: #c2100a;">
+                <h5 align="center" class="card-title text-light">Self-Assessment Tools</h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card" style="margin-top: 30px;">
+              <img src="{% static 'images/Performance overview-bro.png' %}" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color: #c2100a;">
+                <h5 align="center" class="card-title text-light">Performance</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3">
+            <div class="card" style="margin-top: 30px;">
+              <img src="{% static 'images/Feedback-bro.png' %}" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color: #c2100a;">
+                <h5 align="center" class="card-title text-light">Feedback</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-3" style="margin-top: 30px;">
+            <div class="card" >
+              <img src="{% static 'images/Blogging-pana.png' %}" class="card-img-top" alt="...">
+              <div class="card-body" style="background-color: #c2100a;">
+                <h5 align="center" class="card-title text-light">Courses-Catalogue</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div  class="row" style="background-color: rgb(206, 206, 206);">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <h4><span style="color: #505557;">&nbsp;&nbsp;&nbsp;&nbsp;OUR MENTORS <hr></span></h4>
+          <h2><b>&nbsp;&nbsp;&nbsp;ADMINISTRATIVE <span style="color:#c2100a ;">SETUP</span></b></h2>
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <img src="{% static 'images/krishna.jpg' %}" class="card-img-top" alt="..." style=" text-align:center; width:150px; height: 150px; object-fit:cover ; border-radius: 50%; margin-top: 20px; margin-left: 75px;">
+                <div class="card-body">
+                  <h5 align="center"><b><span style="color:#c2100a ; ">Prof. (Dr.) K. C. Sinha</span></b></h5>
+                  <h6 align="center">VICE CHANCELLOR</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="{% static 'images/Sanjoy.jpg' %}" class="card-img-top" alt="..." style=" text-align:center; width:150px; height: 150px; object-fit:cover ; border-radius: 50%; margin-top: 20px; margin-left: 75px;">
+                <div class="card-body">
+                  <h5 align="center"><b><span style="color:#c2100a ; ">Prof. (Dr.) Sanjoy Kumar</span></b></h5>
+                  <h6 align="center">PRO VICE CHANCELLOR</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="{% static 'images/Habibur.jpg' %}" class="card-img-top" alt="..." style=" text-align:center; width:150px; height: 150px; object-fit:cover ; border-radius: 50%; margin-top: 20px; margin-left: 75px;">
+                <div class="card-body">
+                  <h5 align="center"><b><span style="color:#c2100a ; ">Dr. Md. Habibur Rahman</span></b></h5>
+                  <h6 align="center">REGISTRAR</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card">
+                <img src="{% static 'images/Neelam.jpg' %}" class="card-img-top" alt="..." style=" text-align:center; width:150px; height: 150px; object-fit:cover ; border-radius: 50%; margin-top: 20px; margin-left: 75px;">
+                <div class="card-body">
+                  <h5 align="center"><b><span style="color:#c2100a ; ">Dr. Neelam Kumari</span></b></h5>
+                  <h6 align="center">REGISTRAR (Exam)</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+
+        <div class="row" style="background-color: #d46464;">
+          <h5><span style="color: #f1f5f7;">&nbsp;&nbsp;&nbsp;&nbsp;HOW TO USE <hr></span></h5>
+          <h2>&nbsp;&nbsp;&nbsp;NOU e-GYAN PORTAL TUTORIAL VIDEOS</h2>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;For any queries regarding the access into the Portal, the users can watch the tutorial videos provided or feel free to communicate their issues via the given contact helpline number or helpline email ID.</p>
+          <div class="col-sm-6">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/Sh9VxOBoYbk?si=xNNwc-ZvJUI0BPSO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div style="background-color: #c2100a; width:560px">
+                <a style="color: white ; text-align: center;" href="https://www.youtube.com/embed/Sh9VxOBoYbk?si=xNNwc-ZvJUI0BPSO" ><h5>HOW TO LOGIN AT NOU E-GYAN PORTAL</h5></a>   
+              </div>        
+            </div>
+            
+          </div>
+          <div class="col-sm-6">
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/cEaTY8EfdRs?si=V8STUgXvaLkQkqQm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              <div style="background-color: #c2100a; width:560px">
+                <a style="color: white ; text-align: center;" href="https://www.youtube.com/embed/cEaTY8EfdRs?si=V8STUgXvaLkQkqQm" ><h5>HOW TO ACCESS CONTENT AT NOU E-GYAN PORTAL</h5></a>   
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-2">
+          
+          <div class="col-sm-3 bg-danger text-light font" style="min-height: 250px;">
+            <img src="{% static 'images/logo.jpeg' %}" alt="" style="border-radius: 200px; margin-left: 25%; margin-top: 10px; border: 5px solid yellow;" >
+            <h5 style="margin-top: 20px; text-align: center;">
+            Nalanda Open University is a State <br> 
+            Open University duly established <br>
+             under the Act of Bihar Government <br> and is also recognized by Distance <br> Education Council, IGNOU, Maidan <br> Garhi, New Delhi.</h5>
+          </div>
+            <div class="col-sm-3 text-light bg-danger" style="min-height: 250px;">
+              <h2 class=" font2"><br/>
+                Useful Links
+              </h2>
+            
+
+              <h5 class="ps-1 font"> <i class="fa-solid fa-arrow-right fa-beat-fade"></i>
+                <span class="ps-2">
+                  Home
+                </span> <br>
+
+                <i class="fa-solid fa-arrow-right fa-beat-fade"></i>
+                <span class="ps-2">
+                  About Portal 
+                </span><br> 
+
+                <i class="fa-solid fa-arrow-right fa-beat-fade"></i>
+                <span class="ps-2">
+                  Services
+                </span> <br>
+
+                <i class="fa-solid fa-arrow-right fa-beat-fade"></i>
+                <span class="ps-2">
+                  Contact
+                </span> <br>
+                <i class="fa-solid fa-arrow-right fa-beat-fade"></i>
+                <span class="ps-2">
+                  Courses
+                </span>  
+              </h5>
+            </div>
+            <div class="col-sm-3 text-light bg-danger"  style="min-height: 250px;"><br/>
+              <h2 class="font2">Contact info </h2>
+              
+               <h4><i class="fa-solid fa-location-dot fa-bounce"></i>
+                 <span class="font2">
+                  NOU
+                 </span> 
+                </h4>
+              <h5 class="font">2nd/3rd Floor, Biscomaun <br> Bhawan, Gandhi Maidan, Patna <br>800 001 (BIHAR)</h5>
+
+              <h4 class="font"> <i class="fa-solid fa-phone fa-shake"></i>+91 1234567890</h4>
+              <h5 class="font">Give us a call</h5>
+            
+            </div>
+            <div class="col-sm-3 text-light bg-danger" style="min-height: 250px;"><br/>
+
+              <h2 class="font2">Subscribe</h2>
+              <h5 class="font">
+                Fill the detail below to recevie <br>
+                the manual of the NOU e-Gyan <br>
+                Portal
+              
+              </h5>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-telegram"></i>
+              <i class="fa-brands fa-whatsapp"></i>
+            
+            
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+</html>

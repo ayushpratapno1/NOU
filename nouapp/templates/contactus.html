@@ -1,0 +1,104 @@
+{% extends "parent.html" %}
+{% block main %}
+{% if messages %}
+ {% for message in messages %}
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+ {% endfor %}
+{% endif %}
+<script>
+    function validate()
+    {
+var name=document.getElementById("name");
+var contactno=document.getElementById("contactno");
+var emailaddress=document.getElementById("emailaddress");
+var emailexp=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(name.value=="" || name.value==null)
+{
+    alert('Please Enter Name');
+    name.focus();
+}
+else if(contactno.value=="" || contactno.value==null)
+{
+    alert('Please Enter Contact No');
+    contactno.focus();
+}
+else if(isNaN(contactno.value))
+{
+alert('Please Enter Number Only');
+contactno.focus();
+}
+else if(contactno.value.length!=10)
+{
+    alert('Please Enter 10 Digit Number');
+    contactno.focus();
+}
+else if(emailaddress.value=="" || emailaddress.value==null)
+{
+    alert('Please enter email address');
+    emailaddress.focus();
+}
+else if(!emailexp.test(emailaddress.value))
+{
+alert('Please enter valid emailaddress');
+emailaddress.focus();
+}
+else
+{
+document.getElementById("frmenquiry").submit();
+}
+    }
+</script>
+<h2 style="text-align: center;">Enquiry</h2>
+<form id="frmenquiry" onsubmit="event.preventDefault();validate();" class="form-group" action="{% url 'nouapp:contactus' %}" method="post">
+    {% csrf_token %}
+<table class="table" style="width: 80%; margin: auto;">
+<tr>
+    <td>Enter Name</td>
+       
+    
+    <td><input type="text" name="name" class="form-control" id="name"/></td>
+</tr>
+<tr>
+    <td>
+        Select Gender
+    </td>
+    <td><input type="radio" name="gender" value="male" class="form-check-input"/> Male &nbsp;&nbsp;
+        <input type="radio" name="gender" value="female" class="form-check-input"/> Female
+    </td>
+</tr>
+<tr>
+    <td>Enter Address</td>
+    <td>
+        <textarea name="address" class="form-control"></textarea>
+    </td>
+    </tr>
+<tr>
+    <td>Enter Contact No</td>
+    <td>
+        <input type="number" name="contactno" class="form-control" id="contactno"/>
+    </td>
+</tr>
+<tr>
+    <td>Enter Email Address</td>
+    <td>
+        <input type="text" name="emailaddress" class="form-control" id="emailaddress"/>
+    </td>
+</tr>
+<tr>
+    <td>Enter Enquiry</td>
+    <td>
+        <textarea name="enquirytext" class="form-control"></textarea>
+    </td>
+</tr>
+<tr>
+    <td>&nbsp;</td>
+    <td>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </td>
+</tr>
+</table>
+</form>
+{% endblock main %}

@@ -1,0 +1,66 @@
+{% extends "parent.html" %}
+{% block main %}
+{% if messages %}
+ {% for message in messages %}
+ <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{message}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+ {% endfor %}
+{% endif %}
+<script>
+    function validate()
+    {
+        var userid=document.getElementById("userid");
+        var password=document.getElementById("password");
+        if(userid.value=="" || userid.value==null)
+        {
+            alert('Please enter userid')
+            userid.focus();
+        }
+        else if(password.value=="" || password.value==null)
+        {
+            alert('Please enter password');
+            password.focus();
+        }
+        else
+        {
+document.getElementById("frmlogin").submit();
+        }
+    }
+</script>
+<h2 style="text-align: center;">Login Form</h2>
+<form action="{% url 'nouapp:login' %}" class="form-group" id="frmlogin" method="post" onsubmit="event.preventDefault();validate();">
+    {% csrf_token %}
+    <table class="table" style="margin: auto; width: 80%;">
+    <tr>
+        <td>Enter UserId/ Roll No</td>
+        <td>
+            <input type="text" name="userid" class="form-control" id="userid"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Enter Password</td>
+        <td>
+            <input type="password" name="password" class="form-control" id="password"/>
+        </td>
+    </tr>
+    <tr>
+        <td>Select Usertype</td>
+        <td>
+            <select name="usertype" class="form-control">
+                <option selected>Select Usertype</option>
+                <option value="student">Student</option>
+                <option value="admin">Admin</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>
+            <button type="submit" class="btn btn-success">Login</button>
+        </td>
+    </tr>
+</table>
+</form>
+{% endblock main %}

@@ -1,0 +1,17 @@
+# Core framework
+Django==4.2.4
+
+# Configuration and database URL parsing
+dj-database-url==2.1.0
+python-dotenv==1.0.1
+
+# Production static files and WSGI server
+whitenoise==6.6.0
+gunicorn==21.2.0
+
+# PostgreSQL support for Render
+psycopg2-binary==2.9.9
+
+# Cloudinary-backed media storage
+cloudinary==1.44.2
+django-cloudinary-storage==0.3.0

@@ -1,8 +1,3 @@
-databases:
-  - name: egyan-db
-    plan: free
-    databaseName: egyan
-    user: egyan
 
 services:
   - type: web
@@ -12,33 +7,43 @@ services:
     buildCommand: bash build.sh
     startCommand: python -m gunicorn egyanproject.wsgi:application
     healthCheckPath: /
+
     envVars:
       - key: PYTHON_VERSION
-        value: "3.12.11"
+        value: "3.14.7"
+
       - key: DATABASE_URL
-        fromDatabase:
-          name: egyan-db
-          property: connectionString
+        sync: false
+
       - key: SECRET_KEY
         generateValue: true
+
       - key: DEBUG
         value: "False"
+
       - key: PRODUCTION
         value: "True"
-      - key: DJANGO_SUPERUSER_USERNAME
-        sync: false
-      - key: DJANGO_SUPERUSER_EMAIL
-        sync: false
-      - key: DJANGO_SUPERUSER_PASSWORD
-        sync: false
+
       - key: ALLOWED_HOSTS
         fromService:
           name: egyanproject
           type: web
           envVarKey: RENDER_EXTERNAL_HOSTNAME
+
+      - key: DJANGO_SUPERUSER_USERNAME
+        sync: false
+
+      - key: DJANGO_SUPERUSER_EMAIL
+        sync: false
+
+      - key: DJANGO_SUPERUSER_PASSWORD
+        sync: false
+
       - key: CLOUDINARY_CLOUD_NAME
         sync: false
+
       - key: CLOUDINARY_API_KEY
         sync: false
+
       - key: CLOUDINARY_API_SECRET
         sync: false

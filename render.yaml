@@ -30,13 +30,13 @@ services:
           type: web
           envVarKey: RENDER_EXTERNAL_HOSTNAME
 
-      - key: DJANGO_SUPERUSER_USERNAME
+      - key: SUPERUSER_USERNAME
         sync: false
 
-      - key: DJANGO_SUPERUSER_EMAIL
+      - key: SUPERUSER_EMAIL
         sync: false
 
-      - key: DJANGO_SUPERUSER_PASSWORD
+      - key: SUPERUSER_PASSWORD
         sync: false
 
       - key: CLOUDINARY_CLOUD_NAME

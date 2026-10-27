@@ -2,6 +2,7 @@ from django.test import TestCase
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 
+from adminapp.models import Branch, Program, Year
 from .models import Login
 
 
@@ -60,3 +61,18 @@ class LoginTests(TestCase):
         )
 
         self.assertRedirects(response, reverse("admin:index"))
+
+
+class RegistrationOptionsTests(TestCase):
+    def test_registration_page_has_academic_options(self):
+        response = self.client.get(reverse("nouapp:registration"))
+
+        self.assertContains(response, '<option value="B.Tech.">B.Tech.</option>')
+        self.assertContains(
+            response,
+            '<option value="Computer Science">Computer Science</option>',
+        )
+        self.assertContains(response, '<option value="First Year">First Year</option>')
+        self.assertTrue(Program.objects.filter(program="B.Tech.").exists())
+        self.assertTrue(Branch.objects.filter(branch="Computer Science").exists())
+        self.assertTrue(Year.objects.filter(year="First Year").exists())

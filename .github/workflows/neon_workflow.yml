@@ -67,15 +67,64 @@ jobs:
           DEBUG: "True"
           PRODUCTION: "False"
 
+  
   delete:
     name: Delete temporary Neon branch
     if: github.event.action == 'closed'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Delete temporary Neon branch
-        uses: neondatabase/delete-branch-action@v3
-        with:
-          project_id: ${{ vars.NEON_PROJECT_ID }}
-          branch: preview/pr-${{ github.event.number }}
-          api_key: ${{ secrets.NEON_API_KEY }}
+      - name: Install Neon CLI
+        run: npm install -g neonctl@v2
+
+      - name: Find preview branch
+        id: find_branch
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_API_HOST: https://console.neon.tech/api/v2
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          PREVIEW_BRANCH: preview/pr-${{ github.event.number }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          neonctl branches list \
+            --project-id "$NEON_PROJECT_ID" \
+            --output json > branches.json
+
+          python - <<'PY'
+          import json
+          import os
+
+          with open("branches.json", encoding="utf-8") as f:
+              data = json.load(f)
+
+          branches = data if isinstance(data, list) else data.get("branches", [])
+          target = os.environ["PREVIEW_BRANCH"]
+
+          found = any(
+              isinstance(branch, dict) and branch.get("name") == target
+              for branch in branches
+          )
+
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as f:
+              f.write(f"found={'true' if found else 'false'}\n")
+
+          print(f"{'Found' if found else 'Did not find'} {target}")
+          PY
+
+      - name: Delete preview branch
+        if: steps.find_branch.outputs.found == 'true'
+        env:
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_API_HOST: https://console.neon.tech/api/v2
+          NEON_PROJECT_ID: ${{ vars.NEON_PROJECT_ID }}
+          PREVIEW_BRANCH: preview/pr-${{ github.event.number }}
+        run: |
+          neonctl branches delete "$PREVIEW_BRANCH" \
+            --project-id "$NEON_PROJECT_ID" \
+            --yes
+
+      - name: Skip cleanup when branch is absent
+        if: steps.find_branch.outputs.found != 'true'
+        run: echo "No temporary preview branch exists; nothing to delete."

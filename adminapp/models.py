@@ -2,11 +2,11 @@ from django.db import models
 
 # Create your models here.
 class Program(models.Model):
-    program=models.CharField(max_length=100)
+    program=models.CharField(max_length=100, unique=True)
 class Branch(models.Model):
-    branch=models.CharField(max_length=100)
+    branch=models.CharField(max_length=100, unique=True)
 class Year(models.Model):
-    year=models.CharField(max_length=100)
+    year=models.CharField(max_length=100, unique=True)
 class Material(models.Model):
     ids=models.AutoField(primary_key=True)
     program=models.CharField(max_length=100)

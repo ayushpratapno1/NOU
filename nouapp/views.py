@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,reverse
+from django.contrib.auth import authenticate, login as auth_login
 from . models import Enquiry,Login,Student
 from datetime import date
 from django.contrib import messages
@@ -43,6 +44,17 @@ def login(request):
     if request.method=="POST":
         userid=request.POST['userid']
         password=request.POST['password']
+
+        # Django superusers and staff users are stored in auth_user, while
+        # students are still stored in the application's legacy Login model.
+        # Authenticate Django admin users first so a user created by
+        # create_superuser.py can use both login screens.
+        user=authenticate(request, username=userid, password=password)
+        if user is not None and user.is_staff:
+            auth_login(request, user)
+            request.session['adminid']=user.get_username()
+            return redirect(reverse('adminapp:adminhome'))
+
         try:
             obj=Login.objects.get(userid=userid,password=password)
             if obj.usertype=="student":
@@ -51,9 +63,7 @@ def login(request):
             elif obj.usertype=='admin':
                 request.session['adminid']=userid
                 return redirect(reverse('adminapp:adminhome'))
-            elif obj.usertype=="admin":
-                messages.success(request,"Welcome Admin")
-        except:
+        except Login.DoesNotExist:
             messages.success(request,'Invalid User')
     ns=News.objects.all()
     return render(request,"login.html",locals())

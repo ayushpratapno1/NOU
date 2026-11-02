@@ -2,15 +2,8 @@
 name: Neon PR Database Preview
 
 on:
-  push:
-    branches:
-      - main
-      - beta
   pull_request:
     types: [opened, reopened, synchronize, closed]
-    branches:
-      - main
-      - beta
 
 permissions:
   contents: read
@@ -23,7 +16,6 @@ jobs:
   test:
     name: Test Django with temporary Neon database
     if: >-
-      github.event_name == 'push' ||
       github.event.action == 'opened' ||
       github.event.action == 'reopened' ||
       github.event.action == 'synchronize'

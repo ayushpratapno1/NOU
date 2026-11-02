@@ -1,4 +1,7 @@
 {% extends "parent.html" %}
+{% block title %}
+<title>Log In</title>
+{% endblock title %}
 {% block main %}
 {% if messages %}
  {% for message in messages %}
@@ -13,6 +16,7 @@
     {
         var userid=document.getElementById("userid");
         var password=document.getElementById("password");
+        var usertype=document.getElementById("usertype");
         if(userid.value=="" || userid.value==null)
         {
             alert('Please enter userid')
@@ -22,6 +26,11 @@
         {
             alert('Please enter password');
             password.focus();
+        }
+        else if(usertype.value=="" || usertype.value==null)
+        {
+            alert('Please select usertype');
+            usertype.focus();
         }
         else
         {
@@ -48,8 +57,8 @@ document.getElementById("frmlogin").submit();
     <tr>
         <td>Select Usertype</td>
         <td>
-            <select name="usertype" class="form-control">
-                <option selected>Select Usertype</option>
+            <select name="usertype" id="usertype" class="form-control" required>
+                <option value="" selected disabled>Select Usertype</option>
                 <option value="student">Student</option>
                 <option value="admin">Admin</option>
             </select>

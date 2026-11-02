@@ -10,9 +10,11 @@ from adminapp.models import News
 def index(request):
     ns=News.objects.all()
     return render(request,"index.html",locals())
+
 def aboutus(request):
     ns=News.objects.all()
     return render(request,"aboutus.html",locals())
+
 def registration(request):
     if request.method=="POST":
         rollno=request.POST['rollno']
@@ -40,23 +42,26 @@ def registration(request):
     year=Year.objects.all()
     ns=News.objects.all()
     return render(request,"registration.html",locals())
+
 def login(request):
     if request.method=="POST":
         userid=request.POST['userid']
         password=request.POST['password']
+        usertype=request.POST['usertype']
 
         # Django superusers and staff users are stored in auth_user, while
         # students are still stored in the application's legacy Login model.
         # Authenticate Django admin users first so a user created by
         # create_superuser.py can use both login screens.
-        user=authenticate(request, username=userid, password=password)
+        user=authenticate(request, username=userid, password=password, usertype=usertype)
         if user is not None and user.is_staff:
-            auth_login(request, user)
-            request.session['adminid']=user.get_username()
-            return redirect(reverse('adminapp:adminhome'))
+            if usertype == 'admin':
+              auth_login(request, user)
+              request.session['adminid']=user.get_username()
+              return redirect(reverse('adminapp:adminhome'))
 
         try:
-            obj=Login.objects.get(userid=userid,password=password)
+            obj=Login.objects.get(userid=userid, password=password, usertype=usertype)
             if obj.usertype=="student":
                 request.session['rollno']=userid
                 return redirect(reverse('studentapp:studenthome'))
@@ -64,9 +69,10 @@ def login(request):
                 request.session['adminid']=userid
                 return redirect(reverse('adminapp:adminhome'))
         except Login.DoesNotExist:
-            messages.success(request,'Invalid User')
+            messages.error(request,'Invalid User')
     ns=News.objects.all()
     return render(request,"login.html",locals())
+
 def contactus(request):
     if request.method=="POST":
      name=request.POST['name']

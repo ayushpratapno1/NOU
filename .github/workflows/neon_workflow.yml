@@ -1,30 +1,21 @@
+
 name: Neon PR Database Preview
 
 on:
-  push:
-    branches:
-      - main
-      - beta
-
   pull_request:
     types: [opened, reopened, synchronize, closed]
-    branches:
-      - main
-      - beta
 
 permissions:
   contents: read
 
 concurrency:
-  # Added fallback to github.ref_name so it doesn't break on pushes
-  group: neon-pr-${{ github.event.number || github.ref_name }}
+  group: neon-pr-${{ github.event.number }}
   cancel-in-progress: true
 
 jobs:
   test:
     name: Test Django with temporary Neon database
     if: >-
-      github.event_name == 'push' ||
       github.event.action == 'opened' ||
       github.event.action == 'reopened' ||
       github.event.action == 'synchronize'
@@ -55,8 +46,7 @@ jobs:
         with:
           project_id: ${{ vars.NEON_PROJECT_ID }}
           api_key: ${{ secrets.NEON_API_KEY }}
-          # Added fallback to github.ref_name so it doesn't break on pushes
-          branch_name: preview/pr-${{ github.event.number || github.ref_name }}
+          branch_name: preview/pr-${{ github.event.number }}
           parent_branch: ${{ vars.NEON_PARENT_BRANCH }}
           expires_at: ${{ steps.expiration.outputs.expires_at }}
 
@@ -86,6 +76,5 @@ jobs:
         uses: neondatabase/delete-branch-action@v3
         with:
           project_id: ${{ vars.NEON_PROJECT_ID }}
-          # Match the branch_name format from the test job
-          branch: preview/pr-${{ github.event.number || github.ref_name }}
+          branch: preview/pr-${{ github.event.number }}
           api_key: ${{ secrets.NEON_API_KEY }}

@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
     <title>NOU EGyan Portal</title>
+    {% endblock title %}
     <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
     
@@ -75,7 +77,7 @@
             <li class="nav-item menu-items">
               <a class="nav-link" href="#">
                 <span class="menu-icon">
-                  <i class="mdi mdi-speedometer"></i>
+                  <i class="mdi mdi-home"></i>
                 </span>
                 <span class="menu-title">Dashboard</span>
               </a>
@@ -83,14 +85,14 @@
            <li class="nav-item menu-items">
               <a class="nav-link" href="{% url 'studentapp:viewstudymaterial' %}">
                 <span class="menu-icon">
-                  <i class="mdi mdi-playlist-play"></i>
+                  <i class="mdi mdi-file-document"></i>
                 </span>
                 <span class="menu-title">View Study Material</span>
               </a>           
             <li class="nav-item menu-items">
               <a class="nav-link" href="{% url 'studentapp:postquestion' %}">
                 <span class="menu-icon">
-                  <i class="mdi mdi-playlist-play"></i>
+                  <i class="mdi mdi-forum"></i>
                 </span>
                 <span class="menu-title">Discussion Forum</span>
               </a>
@@ -98,7 +100,7 @@
             <li class="nav-item menu-items">
               <a class="nav-link" href="{% url 'studentapp:response' %}">
                 <span class="menu-icon">
-                  <i class="mdi mdi-playlist-play"></i>
+                  <i class="mdi mdi-comment-alert"></i>
                 </span>
                 <span class="menu-title">Complain/Feedback</span>
               </a>
@@ -106,7 +108,7 @@
             <li class="nav-item menu-items">
               <a class="nav-link" href="{% url 'studentapp:viewprofile' %}">
                 <span class="menu-icon">
-                  <i class="mdi mdi-playlist-play"></i>
+                  <i class="mdi mdi-account"></i>
                 </span>
                 <span class="menu-title">View Profile</span>
               </a>

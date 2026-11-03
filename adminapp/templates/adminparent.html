@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NOU EGyan Portal</title>
+    {% block title %}
+        <title>NOU EGyan Portal</title>
+    {% endblock title %}
     <link rel="stylesheet" href="{% static 'assets/vendors/mdi/css/materialdesignicons.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/vendors/css/vendor.bundle.base.css' %}">
     
@@ -71,6 +73,14 @@
                 </a>
               </div>
             </div>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{% url 'adminapp:adminhome' %}">
+              <span class="menu-icon">
+                <i class="mdi mdi-home"></i>
+              </span>
+              <span class="menu-title">Admin Home</span>
+            </a>
           </li>            
           <li class="nav-item menu-items">
             <a class="nav-link" href="{% url 'adminapp:viewstudent' %}">
@@ -83,7 +93,7 @@
          <li class="nav-item menu-items">
             <a class="nav-link" href="{% url 'adminapp:studymaterial' %}">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-upload"></i>
               </span>
               <span class="menu-title">Upload Study Material</span>
             </a>
@@ -92,7 +102,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link" href="{% url 'adminapp:viewmaterial' %}">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-file-document"></i>
               </span>
               <span class="menu-title">View Study Material</span>
             </a>
@@ -101,7 +111,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link" href="{% url 'adminapp:viewfeedback' %}">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-comment-text"></i>
               </span>
               <span class="menu-title">View Feedbacks</span>
             </a>
@@ -109,7 +119,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link" href="{% url 'adminapp:viewcomplain' %}">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-comment-alert"></i>
               </span>
               <span class="menu-title">View Complaints</span>
             </a>
@@ -117,7 +127,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link" href="{% url 'adminapp:viewenquiry' %}">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-comment-question"></i>
               </span>
               <span class="menu-title">View Enquiries</span>
             </a>
@@ -125,7 +135,7 @@
           <li class="nav-item menu-items">
             <a class="nav-link" href="{% url 'adminapp:news' %}">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-upload"></i>
               </span>
               <span class="menu-title">Add News & Events</span>
             </a>

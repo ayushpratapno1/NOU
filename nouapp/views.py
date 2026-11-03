@@ -33,7 +33,8 @@ def registration(request):
         usertype='student'
         status='false'
         stu=Student(rollno=rollno,name=name,fname=fname,mname=mname,gender=gender,address=address,program=program,branch=branch,year=year,contactno=contactno,emailaddress=emailaddress,regdate=regdate)
-        log=Login(userid=rollno,password=password,usertype=usertype,status=status)
+        log=Login(userid=rollno,usertype=usertype,status=status)
+        log.set_password(password)
         stu.save()
         log.save()
         messages.success(request,'Student Registration is done')
@@ -61,13 +62,15 @@ def login(request):
               return redirect(reverse('adminapp:adminhome'))
 
         try:
-            obj=Login.objects.get(userid=userid, password=password, usertype=usertype)
-            if obj.usertype=="student":
-                request.session['rollno']=userid
-                return redirect(reverse('studentapp:studenthome'))
-            elif obj.usertype=='admin':
-                request.session['adminid']=userid
-                return redirect(reverse('adminapp:adminhome'))
+            obj=Login.objects.get(userid=userid, usertype=usertype)
+            if obj.check_password(password):
+                if obj.usertype=="student":
+                    request.session['rollno']=userid
+                    return redirect(reverse('studentapp:studenthome'))
+                elif obj.usertype=='admin':
+                    request.session['adminid']=userid
+                    return redirect(reverse('adminapp:adminhome'))
+            messages.error(request,'Invalid User')
         except Login.DoesNotExist:
             messages.error(request,'Invalid User')
     ns=News.objects.all()

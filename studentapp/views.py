@@ -91,29 +91,30 @@ def viewanswer(request,qid):
        return redirect('nouapp:login')
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 def changepassword(request):
-     try:
-        if request.session['rollno']!=None:
-          rollno=request.session['rollno']
-          stu=Student.objects.get(rollno=rollno)
-          if request.method=='POST':
-             oldpassword=request.POST['oldpassword']
-             newpassword=request.POST['newpassword']
-             confirmpassword=request.POST['confirmpassword']
-             presentpassword=Login.objects.get(userid=rollno)
-             if oldpassword==presentpassword.password:
-                if oldpassword!=newpassword:
-                   if newpassword==confirmpassword:
-                      Login.objects.filter(userid=rollno).update(password=newpassword)
-                      return redirect('studentapp:studentlogout')
-                   else:
-                      messages.warning(request,'New Password and Confirm Password must be same..')
+    try:
+        if request.session['rollno'] is not None:
+            rollno=request.session['rollno']
+            stu=Student.objects.get(rollno=rollno)
+            if request.method=='POST':
+                oldpassword=request.POST['oldpassword']
+                newpassword=request.POST['newpassword']
+                confirmpassword=request.POST['confirmpassword']
+                presentpassword=Login.objects.get(userid=rollno)
+                if presentpassword.check_password(oldpassword):
+                    if oldpassword!=newpassword:
+                        if newpassword==confirmpassword:
+                            presentpassword.set_password(newpassword)
+                            presentpassword.save(update_fields=['password'])
+                            return redirect('studentapp:studentlogout')
+                        else:
+                            messages.warning(request,'New Password and Confirm Password must be same..')
+                    else:
+                        messages.warning(request,'New Password and Old Password must not be same..')
                 else:
-                   messages.warning(request,'New Password and Old Password must not be same..')
-             else:
-                messages.warning(request,'Old Password is incorrect..')
-          return render(request,"changepassword.html",{'stu':stu})
-     except KeyError:
-         return redirect('nouapp:login')
+                    messages.warning(request,'Old Password is incorrect..')
+            return render(request,"changepassword.html",{'stu':stu})
+    except KeyError:
+        return redirect('nouapp:login')
 @cache_control(no_cache=True,must_revalidate=True,no_store=True)
 def viewprofile(request):
     try:

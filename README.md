@@ -316,6 +316,7 @@ Student posts question → Visible to all students
 | Session auth | Custom session keys (`admin_session`, `student_session`) |
 | Back-button prevention | `cache_control(no_cache=True, must_revalidate=True)` decorator |
 | CSRF protection | Django `CsrfViewMiddleware` |
+| Password storage | Django salted password hashing with legacy-password migration |
 | Password validation | Django's built-in validators |
 | HTTPS enforcement | `SECURE_SSL_REDIRECT` in production |
 | Secure cookies | `SESSION_COOKIE_SECURE`, `CSRF_COOKIE_SECURE` |
